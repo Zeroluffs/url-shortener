@@ -2,19 +2,29 @@
 
 import { useState } from 'react'
 import { classNames } from '../../utils/JoinClassnames'
+import { useQuery } from 'react-query'
 
 export function InputField() {
   const [url, setUrl] = useState('')
   const [isValid, setIsValid] = useState(false)
 
+  const fetchUrl = async () => {
+    const res = await fetch(`https://api.shrtco.de/v2/shorten?url=${url}`)
+    const data = await res.json()
+    return data.result
+  }
+
+  const { data, isLoading, error, refetch } = useQuery('getUrl', fetchUrl, {
+    enabled: false,
+  })
   const handleClick = () => {
     if (isValidUrl(url)) {
       setIsValid(true)
+      refetch()
     } else {
       setIsValid(false)
     }
   }
-
   return (
     <div className="flex flex-col gap-1">
       <p
