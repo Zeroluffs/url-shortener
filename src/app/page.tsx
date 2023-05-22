@@ -1,7 +1,6 @@
 'use client'
 import { InputField } from './InputField'
 import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
-import { LoadingRequest } from './LoadingRequest'
 
 export default function Home() {
   const queryClient = new QueryClient()

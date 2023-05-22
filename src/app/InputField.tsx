@@ -62,12 +62,12 @@ export function InputField() {
         )}>
         Input a correct URL
       </p>
-      <div className="flex flex-row">
+      <div className="flex flex-col lg:gap-0 gap-4 items-center lg:items-start lg:flex-row">
         <input
           type="text"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
-          className="w-96 h-12 shadow-sm border rounded-lg hove border-sky-950 p-4"
+          className="md:w-96 w-72 h-12 shadow-sm border rounded-lg hove border-sky-950 p-4"
           placeholder="Type Your URL"></input>
         <button
           onClick={handleClick}
